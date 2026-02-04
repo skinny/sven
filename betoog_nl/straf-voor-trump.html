@@ -206,6 +206,10 @@
             margin: 0;
             line-height: 1.5;
         }
+        .arg-grid-3col {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
 
         /* ── VS / COUNTER LAYOUT ── */
         .vs-layout {
@@ -314,12 +318,69 @@
             opacity: 1;
         }
 
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-            .arg-grid { grid-template-columns: 1fr; }
-            .vs-layout { grid-template-columns: 1fr; }
-            .vs-divider { text-align: center; }
-            .slide-title h1 { font-size: 2em !important; }
+        /* ── Responsive: Portrait phones ── */
+        /* Uses aspect-ratio because Reveal.js scales content, making max-width unreliable */
+        @media (max-aspect-ratio: 3/4) {
+            /* Title slide */
+            .slide-title h1 { font-size: 6em !important; }
+            .slide-title .meta { font-size: 1.6em !important; letter-spacing: 3px; }
+            .slide-title .rule { width: 120px; height: 4px; }
+
+            /* Section intros */
+            .section-intro .label { font-size: 1.3em !important; letter-spacing: 6px; }
+            .section-intro h2 { font-size: 5em !important; }
+
+            /* General headings */
+            .reveal h2 { font-size: 3em !important; }
+            .reveal .slides section { padding: 50px; }
+
+            /* Cards */
+            .card { padding: 50px 55px; border-radius: 20px; }
+            .card h3 { font-size: 2.6em !important; }
+
+            /* Point lists */
+            .point-list li { font-size: 1.9em; padding-left: 40px; margin-bottom: 1em; line-height: 1.4; }
+            .point-list li::before { top: 0.5em; width: 16px; height: 4px; }
+
+            /* Argument grids */
+            .arg-grid, .arg-grid-3col { grid-template-columns: 1fr; gap: 30px; }
+            .arg-item { padding: 40px 45px; border-radius: 18px; }
+            .arg-item .num { font-size: 3em; }
+            .arg-item p { font-size: 1.7em; line-height: 1.5; }
+
+            /* Timeline */
+            .timeline { padding-left: 55px; margin-top: 1.5em; }
+            .timeline::before { left: 12px; width: 5px; }
+            .tl-item { margin-bottom: 1.8em; padding-left: 30px; }
+            .tl-item::before { left: -55px; width: 20px; height: 20px; border-width: 4px; }
+            .tl-item .tl-year { font-size: 1.5em; }
+            .tl-item .tl-text { font-size: 1.8em; margin-top: 6px; }
+
+            /* Verdict badges */
+            .verdict { font-size: 1.5em; padding: 14px 28px; border-radius: 10px; }
+
+            /* Essay lead */
+            .essay-lead { font-size: 2.2em; padding-left: 35px; border-left-width: 6px; }
+
+            /* VS layout */
+            .vs-layout { grid-template-columns: 1fr; gap: 25px; }
+            .vs-panel { padding: 45px; border-radius: 18px; }
+            .vs-panel h4 { font-size: 2em; margin-bottom: 0.6em; }
+            .vs-divider { font-size: 2.5em; padding: 15px 0; }
+
+            /* Conclusion */
+            .conclusion-points { gap: 18px; }
+            .conclusion-points .cp { padding: 18px 32px; font-size: 1.5em; border-radius: 14px; }
+
+            /* Sources */
+            .sources li { font-size: 1.2em; margin-bottom: 1em; padding-left: 28px; }
+            .sources li::before { width: 12px; height: 12px; top: 8px; }
+
+            /* Inline style overrides */
+            p[style*="font-size:0.7em"] { font-size: 1.5em !important; }
+            p[style*="font-size:0.65em"] { font-size: 1.4em !important; }
+            span[style*="font-size:0.7em"] { font-size: 1.5em !important; }
+            span[style*="font-size:0.9em"] { font-size: 1.6em !important; }
         }
     </style>
 </head>
@@ -546,7 +607,7 @@
 <section data-auto-animate class="bg-warm" data-background-transition="fade">
     <h2 style="font-size:1.4em !important; margin-bottom:0.3em !important;">Is een straf rechtvaardig?</h2>
     <p class="essay-lead">Wij stellen: ja. En wel om deze redenen.</p>
-    <div class="arg-grid" style="grid-template-columns: 1fr 1fr 1fr; gap:12px;">
+    <div class="arg-grid arg-grid-3col">
         <div class="arg-item fragment fade-up">
             <div class="num">①</div>
             <p>Gelijke toepassing van de wet</p>
@@ -656,7 +717,9 @@
         center: true,
         width: 1100,
         height: 700,
-        margin: 0.07,
+        margin: 0.04,
+        minScale: 0.2,
+        maxScale: 1.5,
         progress: true,
         controls: true,
         controlsLayout: 'edges',
