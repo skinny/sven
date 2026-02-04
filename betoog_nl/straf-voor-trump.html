@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Straf voor Donald Trump?</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/black.css" id="theme">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --deep: #0c0c14;
+            --surface: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.06);
+            --muted: rgba(255,255,255,0.4);
+            --body: rgba(255,255,255,0.72);
+            --accent: #c9a84c;
+            --accent-dim: rgba(201,168,76,0.15);
+            --red: #bf4043;
+            --red-dim: rgba(191,64,67,0.12);
+            --blue: #4a7fb5;
+
+            --r-background-color: var(--deep);
+            --r-main-font: 'Source Sans 3', sans-serif;
+            --r-heading-font: 'Playfair Display', serif;
+            --r-main-font-size: 22px;
+            --r-heading-text-transform: none;
+        }
+
+        .reveal { font-family: var(--r-main-font); color: var(--body); }
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: var(--r-heading-font);
+            text-transform: none;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+        .reveal .slides { text-align: left; }
+        .reveal .slides section { padding: 30px; }
+
+        /* ── Progress bar ── */
+        .reveal .progress span {
+            background: linear-gradient(90deg, var(--accent), var(--red)) !important;
+        }
+
+        /* ── TITLE SLIDE ── */
+        .slide-title { text-align: center !important; }
+        .slide-title h1 {
+            font-size: 3em !important;
+            font-weight: 900 !important;
+            line-height: 1.1 !important;
+            margin-bottom: 0.15em !important;
+        }
+        .slide-title h1 .thin { font-weight: 400; color: var(--accent); }
+        .slide-title .meta {
+            font-size: 0.7em;
+            color: var(--muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 1.5em;
+        }
+        .slide-title .rule {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 1.2em auto;
+        }
+
+        /* ── SECTION INTROS ── */
+        .section-intro { text-align: center !important; }
+        .section-intro .label {
+            font-family: var(--r-main-font);
+            font-size: 0.55em;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 0.8em;
+        }
+        .section-intro h2 {
+            font-size: 2.6em !important;
+            line-height: 1.15 !important;
+        }
+
+        /* ── CARD STYLES ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 36px 40px;
+        }
+        .card h3 {
+            font-size: 1.3em !important;
+            margin-bottom: 0.6em !important;
+            color: var(--accent);
+        }
+
+        /* ── TIMELINE ── */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+            margin-top: 1em;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--red));
+            border-radius: 1px;
+        }
+        .tl-item {
+            position: relative;
+            margin-bottom: 1.1em;
+            padding-left: 16px;
+        }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 7px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--deep);
+        }
+        .tl-item .tl-year {
+            font-size: 0.7em;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .tl-item .tl-text {
+            font-size: 0.9em;
+            color: var(--body);
+            margin-top: 2px;
+        }
+
+        /* ── BULLET LISTS ── */
+        .point-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.8em 0 0 0;
+        }
+        .point-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 0.7em;
+            font-size: 0.88em;
+            line-height: 1.5;
+            color: var(--body);
+        }
+        .point-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        /* ── VERDICT / GUILTY BADGE ── */
+        .verdict {
+            display: inline-block;
+            background: var(--red-dim);
+            border: 1px solid rgba(191,64,67,0.3);
+            color: var(--red);
+            padding: 6px 18px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.6em;
+        }
+
+        /* ── ARGUMENT GRID (essay slides) ── */
+        .arg-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 1em;
+        }
+        .arg-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 22px;
+        }
+        .arg-item .num {
+            font-family: var(--r-heading-font);
+            font-size: 1.4em;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .arg-item p {
+            font-size: 0.78em;
+            color: var(--body);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── VS / COUNTER LAYOUT ── */
+        .vs-layout {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 24px;
+            align-items: center;
+            margin-top: 1em;
+        }
+        .vs-divider {
+            font-family: var(--r-heading-font);
+            font-size: 1.2em;
+            color: var(--muted);
+            font-weight: 800;
+        }
+        .vs-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+        }
+        .vs-panel h4 {
+            font-family: var(--r-heading-font);
+            font-size: 0.9em;
+            margin-bottom: 0.5em;
+            color: #fff;
+        }
+        .vs-panel.against { border-color: rgba(191,64,67,0.2); }
+        .vs-panel.against h4 { color: var(--red); }
+        .vs-panel.for { border-color: rgba(201,168,76,0.2); }
+        .vs-panel.for h4 { color: var(--accent); }
+
+        /* ── ESSAY HIGHLIGHT ── */
+        .essay-lead {
+            font-family: var(--r-heading-font);
+            font-size: 1.15em;
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            margin: 1em 0;
+        }
+
+        /* ── CONCLUSION SLIDE ── */
+        .conclusion-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 1.2em;
+            justify-content: center;
+        }
+        .conclusion-points .cp {
+            background: var(--accent-dim);
+            border: 1px solid rgba(201,168,76,0.25);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.78em;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* ── SOURCES ── */
+        .sources {
+            list-style: none;
+            padding: 0;
+            margin: 1em 0 0 0;
+        }
+        .sources li {
+            font-size: 0.55em;
+            color: var(--muted);
+            margin-bottom: 0.6em;
+            word-break: break-all;
+            padding-left: 16px;
+            position: relative;
+        }
+        .sources li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+        .sources li a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .sources li a:hover { color: var(--accent); }
+
+        /* ── BACKGROUNDS ── */
+        .bg-warm { background: radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.06) 0%, transparent 65%), var(--deep) !important; }
+        .bg-tension { background: radial-gradient(ellipse at 70% 40%, rgba(191,64,67,0.07) 0%, transparent 60%), var(--deep) !important; }
+        .bg-calm { background: radial-gradient(ellipse at 50% 50%, rgba(74,127,181,0.06) 0%, transparent 60%), var(--deep) !important; }
+
+        /* ── Fragment animations ── */
+        .reveal .slides section .fragment.slide-up {
+            transform: translateY(15px);
+            opacity: 0;
+        }
+        .reveal .slides section .fragment.slide-up.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .arg-grid { grid-template-columns: 1fr; }
+            .vs-layout { grid-template-columns: 1fr; }
+            .vs-divider { text-align: center; }
+            .slide-title h1 { font-size: 2em !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 1 — TITLE
+     ═══════════════════════════════════════════════════ -->
+<section data-background-color="#0c0c14" data-transition="zoom">
+    <div class="slide-title">
+        <h1>Straf <span class="thin">voor</span><br>Donald Trump?</h1>
+        <div class="rule"></div>
+        <p class="meta">Sven & Armin · 4vA</p>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 2 — WAAROM BELANGRIJK
+     ═══════════════════════════════════════════════════ -->
+<section data-auto-animate data-background-color="#0c0c14" data-background-transition="zoom">
+    <div class="section-intro">
+        <div class="label">Inleiding</div>
+        <h2 data-id="q1">Waarom is deze<br>vraag belangrijk?</h2>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 3 — WIE IS TRUMP
+     ═══════════════════════════════════════════════════ -->
+<section data-auto-animate class="bg-warm">
+    <h2 data-id="q1" style="font-size:1.4em !important; margin-bottom:0.6em !important;">Wie is Trump?</h2>
+    <div class="card">
+        <ul class="point-list">
+            <li><strong>Donald John Trump</strong></li>
+            <li>Geboren 14 juni 1946 — Queens, New York</li>
+            <li>45e en 47e president van de Verenigde Staten</li>
+            <li>Grootouders geëmigreerd uit Duitsland</li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 4 — WAT HEEFT HIJ GEDAAN (OVERVIEW)
+     ═══════════════════════════════════════════════════ -->
+<section data-auto-animate data-background-color="#0c0c14" data-background-transition="zoom">
+    <div class="section-intro">
+        <div class="label">De feiten</div>
+        <h2 data-id="feiten">Wat heeft hij<br>gedaan dan?</h2>
+    </div>
+</section>
+
+<section data-auto-animate class="bg-tension">
+    <h2 data-id="feiten" style="font-size:1.3em !important; margin-bottom:0.5em !important;">Wat heeft hij gedaan dan?</h2>
+    <div class="arg-grid">
+        <div class="arg-item fragment fade-up">
+            <div class="num">01</div>
+            <p>Verdacht voor verkrachtingen<br><span style="color:var(--muted); font-size:0.9em;">begin 2000 – 2020</span></p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">02</div>
+            <p>NY criminal hush-money case<br><span style="color:var(--muted); font-size:0.9em;">maart 2023 – mei 2024</span></p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">03</div>
+            <p>NY AG civil fraud case<br><span style="color:var(--muted); font-size:0.9em;">oktober 2023 – januari 2024</span></p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">04</div>
+            <p>Militair geweld tegen Venezuela &amp; ICE-operaties</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 5 — VERKRACHTINGEN TIMELINE
+     ═══════════════════════════════════════════════════ -->
+<section data-auto-animate class="bg-tension" data-background-transition="fade">
+    <h2 style="font-size:1.4em !important; margin-bottom:0.3em !important;">Verdacht voor verkrachtingen</h2>
+    <p style="font-size:0.7em; color:var(--muted); margin-bottom:0.8em;">Een patroon over vier decennia</p>
+    <div class="timeline">
+        <div class="tl-item fragment fade-up">
+            <div class="tl-year">1980</div>
+            <div class="tl-text">Begin verdenkingen van seksueel wangedrag</div>
+        </div>
+        <div class="tl-item fragment fade-up">
+            <div class="tl-year">2005</div>
+            <div class="tl-text">"Access Hollywood" video lekt uit</div>
+        </div>
+        <div class="tl-item fragment fade-up">
+            <div class="tl-year">2016</div>
+            <div class="tl-text">Aanklacht verkrachting 13-jarig meisje</div>
+        </div>
+        <div class="tl-item fragment fade-up">
+            <div class="tl-year">2019</div>
+            <div class="tl-text">E. Jean Carroll dient aanklacht in</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 6 — HUSH MONEY CASE
+     ═══════════════════════════════════════════════════ -->
+<section data-auto-animate class="bg-tension" data-background-transition="fade">
+    <h2 style="font-size:1.3em !important; margin-bottom:0.3em !important;">New York Criminal<br>Hush-Money Case</h2>
+    <div class="card" style="margin-top:0.8em;">
+        <ul class="point-list">
+            <li class="fragment fade-up">Strafzaak: zwijggeld aan Stormy Daniels</li>
+            <li class="fragment fade-up">Valse bedrijfsadministratie om betaling te verhullen</li>
+            <li class="fragment fade-up"><strong>34 strafbare feiten</strong> ten laste gelegd</li>
+            <li class="fragment fade-up">Doel: verkiezing 2016 beïnvloeden</li>
+            <li class="fragment fade-up">Eerste zittende president ooit veroordeeld</li>
+        </ul>
+        <div class="fragment fade-up">
+            <span class="verdict">Schuldig op alle 34 punten</span>
+            <span style="font-size:0.7em; color:var(--muted); margin-left:12px;">Onvoorwaardelijke vrijlating</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 7 — CIVIL FRAUD CASE
+     ═══════════════════════════════════════════════════ -->
+<section data-auto-animate class="bg-tension" data-background-transition="fade">
+    <h2 style="font-size:1.3em !important; margin-bottom:0.3em !important;">NY Attorney General<br>Civil Fraud Case</h2>
+    <div class="card" style="margin-top:0.8em;">
+        <ul class="point-list">
+            <li class="fragment fade-up">Civiele fraudezaak aangespannen door New York</li>
+            <li class="fragment fade-up">Vastgoedwaarden systematisch gemanipuleerd</li>
+            <li class="fragment fade-up">Onterecht leningen en belastingvoordeel verkregen</li>
+            <li class="fragment fade-up">Trump Organization direct betrokken</li>
+            <li class="fragment fade-up">Rechter: jarenlange fraude bewezen</li>
+        </ul>
+        <div class="fragment fade-up" style="display:flex; gap:14px; margin-top:0.8em; flex-wrap:wrap;">
+            <span class="verdict">Hoge boetes opgelegd</span>
+            <span class="verdict" style="background:var(--accent-dim); border-color:rgba(201,168,76,0.3); color:var(--accent);">Hoger beroep: boete geschrapt</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 8 — VENEZUELA
+     ═══════════════════════════════════════════════════ -->
+<section data-auto-animate class="bg-tension" data-background-transition="fade">
+    <h2 style="font-size:1.3em !important; margin-bottom:0.3em !important;">Militair geweld<br>tegen Venezuela</h2>
+    <p style="font-size:0.65em; color:var(--muted); margin-bottom:0.8em;">Operatie "Southern Spear"</p>
+    <div class="card">
+        <ul class="point-list">
+            <li class="fragment fade-up">VS-luchtaanvallen op boten bij Venezolaanse kust</li>
+            <li class="fragment fade-up">Landaanvallen uitgevoerd op Venezolaans grondgebied</li>
+            <li class="fragment fade-up">President Maduro gevangen genomen</li>
+            <li class="fragment fade-up">Olieblokkade ingesteld als drukmiddel</li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 9 — ICE
+     ═══════════════════════════════════════════════════ -->
+<section data-auto-animate class="bg-tension" data-background-transition="fade">
+    <h2 style="font-size:1.3em !important; margin-bottom:0.3em !important;">ICE-operaties</h2>
+    <p style="font-size:0.65em; color:var(--muted); margin-bottom:0.8em;">Immigration and Customs Enforcement</p>
+    <div class="card">
+        <ul class="point-list">
+            <li class="fragment fade-up">Grootschalige ICE-operatie in Minneapolis</li>
+            <li class="fragment fade-up">Burger doodgeschoten door agent</li>
+            <li class="fragment fade-up">Nationale Garde ingezet tegen eigen bevolking</li>
+            <li class="fragment fade-up">Massale protesten en internationale kritiek</li>
+            <li class="fragment fade-up">Richtlijnen bijgesteld na escalatie van geweld</li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ═══  ESSAY — SLIDES 10-14 (the argument)  ═══
+     ═══════════════════════════════════════════════════ -->
+
+
+<!-- SLIDE 10 — GEVOLGEN SAMENLEVING -->
+<section data-auto-animate data-background-color="#0c0c14" data-background-transition="zoom">
+    <div class="section-intro">
+        <div class="label">Ons betoog</div>
+        <h2 data-id="essay">Eventuele gevolgen<br>voor de samenleving</h2>
+    </div>
+</section>
+
+<section data-auto-animate class="bg-calm">
+    <h2 data-id="essay" style="font-size:1.3em !important; margin-bottom:0.4em !important;">Eventuele gevolgen voor de samenleving</h2>
+    <p class="essay-lead">Als machtige leiders niet ter verantwoording worden geroepen, wat blijft er dan over van de rechtsstaat?</p>
+    <div class="arg-grid">
+        <div class="arg-item fragment fade-up">
+            <div class="num">01</div>
+            <p>Vertrouwen in het rechtssysteem herstellen</p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">02</div>
+            <p>Bevestigen dat niemand boven de wet staat</p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">03</div>
+            <p>Machtsmisbruik voorkomen en democratie beschermen</p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">04</div>
+            <p>Mensenrechten respecteren en internationale stabiliteit behouden</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- SLIDE 11 — IS STRAF RECHTVAARDIG? -->
+<section data-auto-animate class="bg-warm" data-background-transition="fade">
+    <h2 style="font-size:1.4em !important; margin-bottom:0.3em !important;">Is een straf rechtvaardig?</h2>
+    <p class="essay-lead">Wij stellen: ja. En wel om deze redenen.</p>
+    <div class="arg-grid" style="grid-template-columns: 1fr 1fr 1fr; gap:12px;">
+        <div class="arg-item fragment fade-up">
+            <div class="num">①</div>
+            <p>Gelijke toepassing van de wet</p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">②</div>
+            <p>Verantwoordelijkheid voor eigen daden</p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">③</div>
+            <p>Machtsmisbruik moet bestraft worden</p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">④</div>
+            <p>Preventieve werking: gevaarlijk precedent voorkomen</p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">⑤</div>
+            <p>Vertrouwen in de rechtsstaat herstellen</p>
+        </div>
+        <div class="arg-item fragment fade-up">
+            <div class="num">⑥</div>
+            <p>Democratie versterken voor de toekomst</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- SLIDE 12 — TEGENARGUMENT + WEERLEGGING -->
+<section data-auto-animate class="bg-tension" data-background-transition="fade">
+    <h2 style="font-size:1.3em !important; margin-bottom:0.5em !important;">Tegenargument &amp; Weerlegging</h2>
+    <div class="vs-layout">
+        <div class="vs-panel against fragment fade-up">
+            <h4>Tegenargument</h4>
+            <ul class="point-list">
+                <li>Trump heeft politiek overwicht</li>
+                <li>Trifecta van macht (Huis, Senaat, Witte Huis)</li>
+                <li>Invloed op het Hooggerechtshof</li>
+                <li>Weinig effectieve tegenstand</li>
+            </ul>
+        </div>
+        <div class="vs-divider">vs.</div>
+        <div class="vs-panel for fragment fade-up">
+            <h4>Weerlegging</h4>
+            <ul class="point-list">
+                <li>Macht ≠ onschendbaarheid</li>
+                <li>De wet staat boven politiek</li>
+                <li>Gelijkheid geldt voor iedereen</li>
+                <li>Juist nu: democratie beschermen</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- SLIDE 13 — CONCLUSIE -->
+<section data-auto-animate data-background-color="#0c0c14" data-background-transition="zoom">
+    <div class="section-intro">
+        <div class="label">Tot slot</div>
+        <h2 data-id="conc">Conclusie</h2>
+    </div>
+</section>
+
+<section data-auto-animate class="bg-warm" style="text-align:center !important;">
+    <h2 data-id="conc" style="font-size:1.6em !important; margin-bottom:0.3em !important;">Conclusie</h2>
+    <p class="essay-lead" style="text-align:center; border-left:none; padding-left:0; max-width:700px; margin:0.6em auto 1.2em;">
+        Donald Trump moet verantwoordelijk worden gehouden voor zijn daden — 
+        niet uit politieke motieven, maar omdat de rechtsstaat het vereist.
+    </p>
+    <div class="conclusion-points">
+        <div class="cp fragment fade-up">Niemand boven de wet</div>
+        <div class="cp fragment fade-up">Eerlijke rechtspraak</div>
+        <div class="cp fragment fade-up">Machtsmisbruik stoppen</div>
+        <div class="cp fragment fade-up">Vertrouwen herstellen</div>
+        <div class="cp fragment fade-up">Democratie beschermen</div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SLIDE 15 — BRONNEN
+     ═══════════════════════════════════════════════════ -->
+<section data-background-color="#0c0c14" data-transition="fade">
+    <h2 style="font-size:1.1em !important; margin-bottom:0.5em !important;">Bronnen</h2>
+    <ul class="sources">
+        <li><a href="https://www.cosmopolitan.com/uk/reports/a62831426/trump-allegations-timeline/" target="_blank">cosmopolitan.com — Trump Allegations Timeline</a></li>
+        <li><a href="https://www.theguardian.com/us-news/ng-interactive/2025/jan/13/both-houses-and-a-supreme-court-supermajority-how-trumps-power-compares-historically" target="_blank">theguardian.com — How Trump's Power Compares Historically</a></li>
+        <li><a href="https://nl.wikipedia.org/wiki/Donald_Trump#Afkomst" target="_blank">nl.wikipedia.org — Donald Trump</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Prosecution_of_Donald_Trump_in_New_York" target="_blank">en.wikipedia.org — Prosecution of Donald Trump in New York</a></li>
+        <li><a href="https://www.amnesty.org/en/latest/news/2026/02/usa-aggression-against-venezuela-further-weakens-rules-based-order/" target="_blank">amnesty.org — USA Aggression Against Venezuela</a></li>
+    </ul>
+</section>
+
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+<script>
+    const deck = new Reveal({
+        hash: true,
+        transition: 'slide',
+        transitionSpeed: 'default',
+        backgroundTransition: 'zoom',
+        autoAnimateEasing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+        autoAnimateDuration: 0.9,
+        center: true,
+        width: 1100,
+        height: 700,
+        margin: 0.07,
+        progress: true,
+        controls: true,
+        controlsLayout: 'edges',
+        touch: true,
+    });
+    deck.initialize();
+</script>
+
+</body>
+</html>
