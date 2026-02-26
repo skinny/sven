@@ -303,6 +303,33 @@
         }
         .sources li a:hover { color: var(--accent); }
 
+        /* ── SLIDE IMAGES ── */
+        .slide-portrait {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 3px solid rgba(201,168,76,0.4);
+            box-shadow: 0 0 50px rgba(201,168,76,0.12);
+            margin-bottom: 1em;
+        }
+        .slide-with-img {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 28px;
+            align-items: start;
+        }
+        .slide-with-img > img {
+            width: 260px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            margin-top: 0.5em;
+        }
+
         /* ── BACKGROUNDS ── */
         .bg-warm { background: radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.06) 0%, transparent 65%), var(--deep) !important; }
         .bg-tension { background: radial-gradient(ellipse at 70% 40%, rgba(191,64,67,0.07) 0%, transparent 60%), var(--deep) !important; }
@@ -376,6 +403,11 @@
             .sources li { font-size: 1.2em; margin-bottom: 1em; padding-left: 28px; }
             .sources li::before { width: 12px; height: 12px; top: 8px; }
 
+            /* Images */
+            .slide-portrait { width: 280px; height: 280px; border-width: 5px; }
+            .slide-with-img { grid-template-columns: 1fr; }
+            .slide-with-img > img { width: 100%; height: 220px; }
+
             /* Inline style overrides */
             p[style*="font-size:0.7em"] { font-size: 1.5em !important; }
             p[style*="font-size:0.65em"] { font-size: 1.4em !important; }
@@ -395,6 +427,7 @@
      ═══════════════════════════════════════════════════ -->
 <section data-background-color="#0c0c14" data-transition="zoom">
     <div class="slide-title">
+        <img src="img/trump-portrait.jpg" alt="Donald Trump" class="slide-portrait">
         <h1>Straf <span class="thin">voor</span><br>Donald Trump?</h1>
         <div class="rule"></div>
         <p class="meta">Sven & Armin · 4vA</p>
@@ -515,18 +548,21 @@
      ═══════════════════════════════════════════════════ -->
 <section data-auto-animate class="bg-tension" data-background-transition="fade">
     <h2 style="font-size:1.3em !important; margin-bottom:0.3em !important;">NY Attorney General<br>Civil Fraud Case</h2>
-    <div class="card" style="margin-top:0.8em;">
-        <ul class="point-list fragment fade-up">
-            <li>Civiele fraudezaak aangespannen door New York</li>
-            <li>Vastgoedwaarden systematisch gemanipuleerd</li>
-            <li>Onterecht leningen en belastingvoordeel verkregen</li>
-            <li>Trump Organization direct betrokken</li>
-            <li>Rechter: jarenlange fraude bewezen</li>
-        </ul>
-        <div class="fragment fade-up" style="display:flex; gap:14px; margin-top:0.8em; flex-wrap:wrap;">
-            <span class="verdict">Hoge boetes opgelegd</span>
-            <span class="verdict" style="background:var(--accent-dim); border-color:rgba(201,168,76,0.3); color:var(--accent);">Hoger beroep: boete geschrapt</span>
+    <div class="slide-with-img" style="margin-top:0.8em;">
+        <div class="card">
+            <ul class="point-list fragment fade-up">
+                <li>Civiele fraudezaak aangespannen door New York</li>
+                <li>Vastgoedwaarden systematisch gemanipuleerd</li>
+                <li>Onterecht leningen en belastingvoordeel verkregen</li>
+                <li>Trump Organization direct betrokken</li>
+                <li>Rechter: jarenlange fraude bewezen</li>
+            </ul>
+            <div class="fragment fade-up" style="display:flex; gap:14px; margin-top:0.8em; flex-wrap:wrap;">
+                <span class="verdict">Hoge boetes opgelegd</span>
+                <span class="verdict" style="background:var(--accent-dim); border-color:rgba(201,168,76,0.3); color:var(--accent);">Hoger beroep: boete geschrapt</span>
+            </div>
         </div>
+        <img src="img/civil-fraud.jpg" alt="Civil Fraud Case">
     </div>
 </section>
 
@@ -535,7 +571,7 @@
      SLIDE 8 — VENEZUELA
      ═══════════════════════════════════════════════════ -->
 <section data-auto-animate class="bg-tension" data-background-transition="fade">
-    <h2 style="font-size:1.3em !important; margin-bottom:0.3em !important;">Militair geweld<br>tegen Venezuela</h2>
+    <h2 style="font-size:1.3em !important; margin-bottom:0.3em !important;">Militair geweld tegen Venezuela</h2>
     <p style="font-size:0.65em; color:var(--muted); margin-bottom:0.8em;">Operatie "Southern Spear"</p>
     <div class="card">
         <ul class="point-list fragment fade-up">
@@ -554,14 +590,17 @@
 <section data-auto-animate class="bg-tension" data-background-transition="fade">
     <h2 style="font-size:1.3em !important; margin-bottom:0.3em !important;">ICE-operaties</h2>
     <p style="font-size:0.65em; color:var(--muted); margin-bottom:0.8em;">Immigration and Customs Enforcement</p>
-    <div class="card">
-        <ul class="point-list fragment fade-up">
-            <li>Grootschalige ICE-operatie in Minneapolis</li>
-            <li>Twee burgers doodgeschoten door agenten</li>
-            <li>Nationale Garde ingezet ter ondersteuning van lokale politie</li>
-            <li>Massale protesten en internationale kritiek</li>
-            <li>Richtlijnen bijgesteld na escalatie van geweld</li>
-        </ul>
+    <div class="slide-with-img">
+        <div class="card">
+            <ul class="point-list fragment fade-up">
+                <li>Grootschalige ICE-operatie in Minneapolis</li>
+                <li>Twee burgers doodgeschoten door agenten</li>
+                <li>Nationale Garde ingezet ter ondersteuning van lokale politie</li>
+                <li>Massale protesten en internationale kritiek</li>
+                <li>Richtlijnen bijgesteld na escalatie van geweld</li>
+            </ul>
+        </div>
+        <img src="img/ice-protesten.jpg" alt="ICE-protesten">
     </div>
 </section>
 
